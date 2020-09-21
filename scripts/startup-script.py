@@ -223,6 +223,12 @@ def install_packages():
         print "yum failed to install packages. Trying again in 5 seconds"
         time.sleep(5)
 
+
+    while subprocess.call(['pip', 'install', '--upgrade',
+        'pip']):
+        print "failed to install newer version of pip. Trying again 5 seconds."
+        time.sleep(5)
+        
     while subprocess.call(['pip', 'install', '--upgrade',
         'cachetools==3.1.1', 'google-api-python-client']):
         print "failed to install google python api client. Trying again 5 seconds."
